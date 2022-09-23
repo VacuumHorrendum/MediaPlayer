@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     String music;
+    int paint;
     ArrayList<Song> songs = new ArrayList<Song>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Был выбран пункт " + song.getNameSong(),
                         Toast.LENGTH_SHORT).show();
                 music = song.getNameSong();
+                paint = song.getPortretResource();
 
                 intent.putExtra("music", music);
+                intent.putExtra("paint", paint);
 
                 startActivity(intent);
             }
@@ -45,13 +48,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void setInitialData(){
 
-        songs.add(new Song ("Шостакович", "Симфония №5"));
-        songs.add(new Song ("Вивальди", "Осень"));
-        songs.add(new Song ("Чайковский", "Лебединое озеро"));
-        songs.add(new Song ("Моцарт", "Реквием по мечте"));
-        songs.add(new Song ("Верди", "Реквием"));
-//        states.add(new State ("Колумбия", "Богота", R.drawable.columbia));
-//        states.add(new State ("Уругвай", "Монтевидео", R.drawable.uruguai));
-//        states.add(new State ("Чили", "Сантьяго", R.drawable.chile));
+        songs.add(new Song ("Шостакович", "Симфония №5", R.drawable.shost));
+        songs.add(new Song ("Вивальди", "Осень", R.drawable.viva));
+        songs.add(new Song ("Чайковский", "Лебединое озеро", R.drawable.chai));
+        songs.add(new Song ("Моцарт", "Реквием по мечте", R.drawable.moc));
+        songs.add(new Song ("Верди", "Реквием", R.drawable.verdi));
     }
 }

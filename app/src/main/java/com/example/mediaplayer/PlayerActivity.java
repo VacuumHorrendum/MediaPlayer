@@ -11,28 +11,37 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PlayerActivity extends AppCompatActivity {
    MediaPlayer mPlayer;
    ImageView playButton, pauseButton, stopButton;
+   ImageView paint;
    String music;
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.player);
       Bundle arguments = getIntent().getExtras();
+      paint = findViewById(R.id.imageView);
       music = arguments.get("music").toString();
-      if (music == "Симфония №5") {
-         mPlayer = MediaPlayer.create(this, R.raw.allegro);
+      switch (music){
+         case "Симфония №5":
+            mPlayer = MediaPlayer.create(this, R.raw.allegro);
+            paint.setImageResource(R.drawable.shost);
+            break;
+         case "Осень":
+            mPlayer = MediaPlayer.create(this, R.raw.autumn);
+            paint.setImageResource(R.drawable.viva);
+            break;
+         case "Лебединое озеро":
+            mPlayer = MediaPlayer.create(this, R.raw.lebed);
+            paint.setImageResource(R.drawable.chai);
+            break;
+         case "Реквием по мечте":
+            mPlayer = MediaPlayer.create(this, R.raw.rekviem);
+            paint.setImageResource(R.drawable.moc);
+            break;
+         default:
+            mPlayer = MediaPlayer.create(this, R.raw.rekviem_die_seno);
+            paint.setImageResource(R.drawable.verdi);
       }
-      else if(music == "Осень") {
-         mPlayer = MediaPlayer.create(this, R.raw.autumn);
-      }
-      else if(music == "Лебединое озеро") {
-         mPlayer = MediaPlayer.create(this, R.raw.lebed);
-      }
-      else if(music == "Реквием по мечте") {
-         mPlayer = MediaPlayer.create(this, R.raw.rekviem);
-      }
-      else if(music == "Реквием") {
-         mPlayer = MediaPlayer.create(this, R.raw.rekviem_die_seno);
-      }
+
 
       mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
          @Override

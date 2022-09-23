@@ -41,7 +41,7 @@ public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder>
    @Override
    public void onBindViewHolder(StateAdapter.ViewHolder holder, int position) {
       Song song = songs.get(position);
-//      holder.flagView.setImageResource(state.getFlagResource());
+      holder.portretView.setImageResource(song.getPortretResource());
       holder.textNameGroup.setText(song.getNameGroup());
       holder.textNameSong.setText(song.getNameSong());
 
@@ -61,13 +61,13 @@ public class StateAdapter  extends RecyclerView.Adapter<StateAdapter.ViewHolder>
    }
 
    public static class ViewHolder extends RecyclerView.ViewHolder {
-     // final ImageView flagView;
+      final ImageView portretView;
       final TextView textNameGroup, textNameSong;
       ViewHolder(View view){
          super(view);
          textNameGroup = view.findViewById(R.id.textNameGroup);
          textNameSong = view.findViewById(R.id.textNameSong);
-        // capitalView = view.findViewById(R.id.capital);
+         portretView = view.findViewById(R.id.portretImage);
       }
    }
 }
